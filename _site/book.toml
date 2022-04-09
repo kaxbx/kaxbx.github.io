@@ -2,5 +2,5 @@
 authors = ["kaxbx"]
 language = "en"
 multilingual = false
-#src = "src"
+src = "src"
 title = "some shits"
