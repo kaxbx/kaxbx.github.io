@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="cli/index.html"><strong aria-hidden="true">1.</strong> Command Line Tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/bash.html"><strong aria-hidden="true">1.1.</strong> bash_config</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="cli/index.html"><strong aria-hidden="true">1.</strong> Command Line Tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mpv.html"><strong aria-hidden="true">1.1.</strong> mpv</a></li></ol></li><li class="chapter-item expanded "><a href="configs/index.html"><strong aria-hidden="true">2.</strong> Configs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/bash.html"><strong aria-hidden="true">2.1.</strong> bash_config</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -143,8 +143,599 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="command-line-tool"><a class="header" href="#command-line-tool">Command Line Tool</a></h1>
-<div style="break-before: page; page-break-before: always;"></div><h1 id="bash_config"><a class="header" href="#bash_config">bash_config</a></h1>
+                        <h1 id="just-random-shits"><a class="header" href="#just-random-shits">just random shits</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="mpv"><a class="header" href="#mpv">mpv</a></h1>
+<ul>
+<li>
+<p>let create socket first</p>
+<p><code>.config/mpv/mpv.conf </code></p>
+</li>
+</ul>
+<pre><code class="language-bash">input-ipc-server=~~/socket
+
+</code></pre>
+<p>now restart mpv</p>
+<p>to pause</p>
+<p><code>echo cycle pause | socat - &quot;.config/mpv/socket&quot;</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="configs"><a class="header" href="#configs">Configs</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="i-will-post-my-config-soon-with-some-explain"><a class="header" href="#i-will-post-my-config-soon-with-some-explain">i will post my config soon with some explain</a></h1>
+<p><code>~/.bashrc</code></p>
+<pre><code class="language-bash">#  ▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+# ░▓ conf_author ▓ Pro0x3st mohamed@cock.li
+# ░▓ code        ▓ http://code.xero.nu/dotfiles
+# ░▓ mirror      ▓ not yet
+# ░▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓
+# ░░░░░░░░░░
+
+export PATH=$HOME/bin:$HOME/.cargo/bin:$HOME/.local/bin:$HOME/.orw/scripts/:$HOME/go/bin:$HOME/bin/new:$HOME/.node_modules/bin/:/home/moux/.local/share/gem/ruby/3.0.0/bin::$PATH
+#export CDPATH='~:/var/log:/etc'
+export RANGER_LOAD_DEFAULT_RC=FALSE
+export WORKON_HOME=$HOME/Code/
+export VISUAL=vim
+#export TERMINAL=termite
+export READER=zathura
+#export LANG=utf8
+SSH_AUTH_SOCK=&quot;$XDG_RUNTIME_DIR/ssh-agent.socket&quot;
+export EDITOR=vim
+export RTV_BROWSER=w3m
+export BROWSER=$([ '$(pidof firefox)' = &quot;&quot; ] &amp;&amp; export BROWSER=google-chrome-stable || export BROWSER=firefox)
+#export XDG_CONFIG_HOME=&quot;$HOME/.config&quot;
+#export MSF_DATABASE_CONFIG=&quot;$HOME/.msf4/database.yml&quot;
+export _JAVA_AWT_WM_NONREPARENTING=1
+export RUBYOPT=&quot;rubygems&quot;
+export npm_config_prefix=$HOME/.node_modules
+#export CFLAGS=&quot;-O3 -pipe -march=native&quot;
+#export CXXFLAGS=&quot;-O3 -pipe -march=native&quot;
+#export MAKEFLAGS=&quot;-j4&quot;
+export PASSWORD_STORE_DIR=&quot;$HOME/.local/share/password-store&quot;
+#export WGETRC=&quot;$HOME/.config/wget/wgetrc&quot;
+export HSTR_CONFIG=hicolor       # get more colors
+export MYHISTFILE=~/.bash_myhistory
+export HISTCONTROL=ignoreboth:erasedups
+export HISTTIMEFORMAT=&quot;%Y/%m/%d %H:%M:%S:   &quot;
+export HISTSIZE=50000
+export HISTFILESIZE=50000
+shopt -s histappend              # append new history items to .bash_history
+export FZF_DEFAULT_COMMAND='rg --files --hidden'
+export 'FZF_DEFAULT_COMMAND'=&quot;find . -path '*/\.*' -prune -o -type f -print -o -type l -print 2&gt; /dev/null | sed s/^..//&quot;
+export SUDO_ASKPASS=&quot;rofi-askpass&quot;
+#source &quot;$HOME/bin/pass.bash-completion&quot;
+export FFF_COL1=1
+export FFF_OPENER=&quot;opn&quot;
+export FFF_W3M_XOFFSET=30
+export FFF_W3M_YOFFSET=10
+export FFF_FAV1=~/Downloads
+export FFF_FAV2=~/Documents
+export FFF_FAV3=~/Pictures
+export FFF_FAV4=~/Programs
+export FFF_FAV5=~/Videos
+export FFF_FAV6=/mnt/
+export config=~/.config
+export themes=~/.themes
+export LESS_TERMCAP_mb=$'\e[0;33m'
+export LESS_TERMCAP_md=$'\e[0;36m'
+export LESS_TERMCAP_me=$'\e[0m'
+export LESS_TERMCAP_se=$'\e[0m'
+export LESS_TERMCAP_so=$'\e[0;34;32m'
+export LESS_TERMCAP_ue=$'\e[0m'
+export LESS_TERMCAP_us=$'\e[0;31m'
+## if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
+# Enable filtering.
+_mpv_use_media_globexpr=1
+
+# Override the default media glob expression.
+# Display the default value using `echo $_mpv_media_globexpr`.
+_mpv_media_globexpr='@(mp4)'
+#if [[ $- =~ .*i.* ]]; then bind '&quot;\C-r&quot;: &quot;\C-a hstr -- \C-j&quot;'; fi
+# if this is interactive shell, then bind 'kill last command' to Ctrl-x k
+#if [[ $- =~ .*i.* ]]; then bind '&quot;\C-xk&quot;: &quot;\C-a hstr -k \C-j&quot;'; fi
+
+stty -ixon
+shopt -s autocd         # automatically cd's to path entered at the prompt
+shopt -s cdspell      # corrects minor spelling errors in when using cd
+shopt -s checkwinsize      # as the name says - after each bash command
+shopt -s cmdhist      # attempts to save multiple line commands in the history
+shopt -s dotglob      # includes &lt;.dot&gt; files in file name expansion if poss
+shopt -s expand_aliases      # aliases are expanded
+shopt -s extglob      # the extended pattern matching enabled
+shopt -s histappend      # history from exited shell kept for next open shel
+shopt -s hostcomplete      # host name completion when @ is in the word
+shopt -s nocaseglob      # case-insensitive when performing filename expansion
+
+#set -o vi # Enable Vim Mode in Bash
+set -o vi
+bind -m vi-insert &quot;\C-l&quot;:clear-screen
+#bind -m vi-insert &quot;\C-l&quot;:clear-screen # Control+L for clear-screen
+# Better TAB completion.
+bind 'TAB: menu-complete'
+bind 'set colored-stats on'
+#bind 'set completion-display-width 1'
+bind 'set show-all-if-ambiguous on'
+bind 'set completion-ignore-case on'
+complete -W &quot;+%H:%M +%d.%m.%y_%H:%M&quot; date
+bind 'set completion-map-case on'
+bind 'set page-completions off'
+#bind 'set menu-complete-display-prefix on'
+bind 'set completion-query-items 0'
+
+#-----------------------------------------
+# history completion using the arrow keys:
+#-----------------------------------------
+
+bind '&quot;\e[A&quot;: history-search-backward'
+bind '&quot;\e[B&quot;: history-search-forward'
+#cat /home/marmathe/.cache/wal/sequences
+#source ~/.git-prompt.sh
+#GIT_PS1_DESCRIBE_STYLE=branch
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] &amp;&amp; return
+
+# Syntactic sugar for ANSI escape sequences
+txtblk='\e[0;30m' # Black - Regular
+txtred='\e[0;31m' # Red
+txtgrn='\e[0;32m' # Green
+txtylw='\e[0;33m' # Yellow
+txtblu='\e[0;34m' # Blue
+txtpur='\e[0;35m' # Purple
+txtcyn='\e[0;36m' # Cyan
+txtwht='\e[0;37m' # White
+bldblk='\e[1;30m' # Black - Bold
+bldred='\e[1;31m' # Red
+bldgrn='\e[1;32m' # Green
+bldylw='\e[1;33m' # Yellow
+bldblu='\e[1;34m' # Blue
+bldpur='\e[1;35m' # Purple
+bldcyn='\e[1;36m' # Cyan
+bldwht='\e[1;37m' # White
+unkblk='\e[4;30m' # Black - Underline
+undred='\e[4;31m' # Red
+undgrn='\e[4;32m' # Green
+undylw='\e[4;33m' # Yellow
+undblu='\e[4;34m' # Blue
+undpur='\e[4;35m' # Purple
+undcyn='\e[4;36m' # Cyan
+undwht='\e[4;37m' # White
+bakblk='\e[40m'   # Black - Background
+bakred='\e[41m'   # Red
+badgrn='\e[42m'   # Green
+bakylw='\e[43m'   # Yellow
+bakblu='\e[44m'   # Blue
+bakpur='\e[45m'   # Purple
+bakcyn='\e[46m'   # Cyan
+bakwht='\e[47m'   # White
+txtrst='\e[0m'    # Text Reset
+force_color_prompt=yes
+if [ -n &quot;$force_color_prompt&quot; ]; then
+    if [ -x /usr/bin/tput ] &amp;&amp; tput setaf 1 &gt;&amp;/dev/null; then
+    # We have color support; assume it's compliant with Ecma-48
+    # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
+    # a case would tend to support setf rather than setaf.)
+    color_prompt=yes
+    else
+    color_prompt=
+    fi
+fi
+
+[[ $PS1 &amp;&amp; -f /usr/local/share/bash-completion/bash_completion ]] &amp;&amp; \
+    . /usr/local/share/bash-completion/bash_completion 
+
+export PROMPT_COMMAND=__prompt_command  # Func to gen PS1 after CMDs
+
+function __prompt_command() {
+    local EXIT=&quot;$?&quot;             # This needs to be first
+    PS1=&quot;&quot;
+
+    # see ~/bin/colortest:
+    local RCol='\[\e[0m\]'
+    local Red='\[\e[0;31m\]'
+    local Gre='\[\e[0;32m\]'
+    local BYel='\[\e[1;33m\]'
+    local BBlu='\[\e[0;34m\]'
+    local Pur='\[\e[0;35m\]'
+    local Turq='\[\e[0;36m\]'
+    local bluebg='\[\e[0;44m\]'
+    local redbg='\[\e[0;41m\]'
+
+    parse_git_branch() {
+     git branch 2&gt; /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+    if [ &quot;$color_prompt&quot; = yes ]; then
+
+        if [ -z $DISPLAY ]; then # not in X
+
+            if [ $EXIT != 0 ]; then
+              PS1+=&quot;${Red}err:${EXIT}${RCol} &quot;
+            else
+                PS1+=&quot;${Gre}ok${RCol} &quot;
+            fi
+
+            # display hostname for remote clients:
+            if [ &quot;x$SSH_TTY&quot; = &quot;x&quot; ]; then
+                PS1+=&quot;\u${BBlu}\w${RCol} ${Gre}\$ ${RCol}&quot;
+            else
+                # ssh:
+                PS1+=&quot;\u${BBlu}@\h${RCol} ${BBlu}\w${RCol} ${Gre}\$ ${RCol}&quot;
+            fi
+
+        else
+
+            if [ $EXIT != 0 ]; then
+                PS1+=&quot;${Red} ($EXIT)${RCol} &quot;
+            else
+                PS1+=&quot;${Gre}${RCol} &quot;
+            fi
+            # 🚀 🌈🌈
+            #PS1+=&quot;root@\h ${BBlu}\W${RCol} ${Red}\! ${Gren}\T $(parse_git_branch)${Pur}👾 - ${RCol}&quot;
+            PS1+=&quot;\u ${BBlu}\W${RCol} ${Gre}\! $(parse_git_branch)${Pur}- ${RCol}&quot;
+
+        fi
+
+    else
+        PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    fi
+}
+
+# If this is an xterm set the title to user@host:dir
+case &quot;$TERM&quot; in
+xterm*|rxvt*)
+    PS1=&quot;\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1&quot;
+    ;;
+*)
+    ;;
+esac
+#eval &quot;$(starship init bash)&quot;
+#PS1=&quot;\n\[\e[0;34m\]┌─[\[\e[1;36m\u\e[0;34m\]]──[\e[1;37m\w\e[0;34m]──[\[\e[1;36m\]${HOSTNAME%%.*}\[\e[0;34m\]]\[\e[1;35m\]: \$\[\e[0;34m\]\n\[\e[0;34m\]└────╼ \[\e[1;35m\]&gt;&gt; \[\e[00;00m\]&quot;
+#PS1='\[\e[0;91m\]\W\[\e[m\] \[\e0'
+#  PS1='\[\e[34m\]\u\[\e[1;32m\]@\[\e[0;33m\]\h\[\e[35m\]:\[\e[m\]\w\[\e[1;30m\]$(__git_ps1)\[\e[1;31m\]&gt; \[\e[0m\]'
+
+#export PS1=&quot;\[\e[0;32m\]\u\[\e[0;37m\]@\[\e[0;34m\]\h\[\e[0;37m\]: [\[\e[0;31m\]\w\[\e[0;37m\]] &gt; \[\e[0m\]&quot;
+#PS1='\[\033[01;31m\][\h\[\033[01;36m\] \W\[\033[01;31m\]]\$\[\033[00m\] '
+#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+export PS2='➘ '
+export PS3='\ '
+export PS4='| '
+#export PS1='➜ '
+#export PS1='\[\e[32m\]\u \[\e[90m\]\w \[\e[31m\]&gt;\[\e[0m\] '
+#PS1=&quot;\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$&quot;
+#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
+#PS1='\[\e[0;31m\]────── \[\e[0;32m\]\W\[\e[0m\] $(__git_ps1 &quot;\[\e[0;33m\]at\[\e[0m\] \[\e[0;34m\]%s\[\e[0m\]&quot;)\[\e[0;31m\] # \[\e[0;37m\]'
+#PS1='\[\e[0;31m\]┌─\e[0m\e[34m[\[\e[0m\e[0;32m\] \w\[\e[0m\] \e[34m]\e[0m $(__git_ps1 &quot;\[\e[0;35m\]@\[\e[0m\]\[\e[0;36m\]\[\e[5m \]%s\[\e[25m\]\[\e[0m\]&quot;)\n└─&gt;\[\e[0m\] '
+#PS1='\[\e[0;31m\]$ \[\e[0;32m\]\W\[\e[0m\] $(__git_ps1 &quot;\[\e[1;37m\]@\[\e[0m\] \[\e[0;36m\]%s\[\e[0m\]&quot;) '
+#PS1=&quot;$(if [[ ${EUID} == 0 ]]; then echo '\[\033[01;31m\]\h'; else echo '\[\033[01;32m\]\u@\h'; fi)\[\033[01;34m\] \w \$([[ \$? != 0 ]] &amp;&amp; echo \&quot;\[\033[01;31m\]:(\[\033[01;34m\] \&quot;)\\$\[\033[00m\] &quot;
+
+#PS1=&quot;\[\e[1;34m\]\u\[\e[0m\] » [\[\e[1;32m\]\W\[\e[0m\]]\[\e[1;37m\]:\[\e[0m\] &quot;
+
+
+gatewayip() {
+   ip route | awk '/^def/{print $3}'
+}
+show_exit() {
+    if [ &quot;$1&quot; -eq &quot;0&quot; ]; then
+        return
+    fi
+    echo -e &quot;\007exit $1&quot;
+}
+_exit() {
+    end_history
+    echo -e  &quot;${BRed}Hasta la vista, baby!&quot;
+    echo -en &quot;\033[m&quot;
+}
+log_history() {
+    echo &quot;$(date '+%Y-%m-%d %H:%M:%S') $HOSTNAME:$$ $PWD ($1) $(history 1)&quot; &gt;&gt; $MYHISTFILE
+}
+
+prompt_cmd() {
+    local s=$?
+    show_exit $s;
+    log_history $s;
+}
+
+end_history() {
+    log_history $?;
+    echo &quot;$(date '+%Y-%m-%d %H:%M:%S') $HOSTNAME:$$ $PWD (end)&quot; &gt;&gt; $MYHISTFILE
+}
+function wall() {
+    lastdir=&quot;/home/$USER/.cache/Wall/&quot;
+    cachefile=&quot;$lastdir/.lastpath&quot;
+    default=&quot;/home/$USER/work/wallpapers/MW&quot;
+    if [ &quot;$1&quot; == &quot;-l&quot; ];then
+        if ! -d $lastdir;then
+            mkdir $lastdir
+        else
+            echo &quot;Cannot Create Dir $?&quot;
+        fi
+        read -p &quot;ENTER PATH _&gt; &quot; path
+        if ! -d $path;then
+           echo &quot;Dir Not Exits&quot;
+           exit
+       else
+           echo $path &gt; $cachefile
+        fi
+    fi
+   if [ &quot;$1&quot; == &quot;-r&quot; ];then
+    if [ -d &quot;$defualt&quot; ];then
+        echo &quot;Directory Not Found&quot;
+        return 1
+    fi
+        #/bin/ls -Rt -d -1 $default/{*,.*} | egrep '.jpg$|\.png$|\.jpeg$|.webmp' | shuf | head -1|xargs nitrogen --set-tiled 2&gt;/dev/null
+        imagename=$(/bin/ls -Rt -d -1 $default/{*,.*} | egrep '.jpg$|\.png$|\.jpeg$|.webmp' | shuf | head -1)
+        nitrogen --set-zoom-fill $imagename
+        echo &quot;[+] Wallpaper Have Been Set Succefull...&quot;
+        echo &quot;[!] Wallpaper Path : $imagename&quot;
+        return 0
+       if [ $# != 0 ];then
+            echo &quot;There Unkown Error $#&quot;
+   fi
+    fi
+  read -p &quot;Enter Directory Name : &quot; dir
+    if [ &quot;${dir:-$default}&quot; == &quot;&quot; ];then
+        echo &quot;U have to Enter Dir&quot;
+    elif [ $# != 0 ];then
+        echo &quot;There Unkown Error&quot;
+    else
+      /bin/ls -Rt -d -1 ${dir:-$default}/{*,.*} | egrep '.jpg$|\.png$|\.jpeg$|.webmp' | shuf | head -1|xargs nitrogen --set-zoom-fill
+    return 0
+    fi
+}
+#if [[ -f ~/.alias ]];then
+#    . ~/.alias
+#fi
+#if [[ -f ~/.prompt ]];then
+#    . ~/.prompt
+#fi
+function proxy_on() {
+    export no_proxy=&quot;localhost,127.0.0.1,localaddress,.localdomain.com&quot;
+
+    if (( $# &gt; 0 )); then
+        valid=$(echo $@ | sed -n 's/\([0-9]\{1,3\}.\?\)\{4\}:\([0-9]\+\)/&amp;/p')
+        if [[ $valid != $@ ]]; then
+            &gt;&amp;2 echo &quot;Invalid address&quot;
+            return 1
+        fi
+        local proxy=$1
+        export http_proxy=&quot;$proxy&quot; \
+               https_proxy=$proxy \
+               ftp_proxy=$proxy \
+               rsync_proxy=$proxy
+        echo &quot;Proxy environment variable set.&quot;
+        return 0
+    fi
+
+    echo -n &quot;username: &quot;; read username
+    if [[ $username != &quot;&quot; ]]; then
+        echo -n &quot;password: &quot;
+        read -es password
+        local pre=&quot;$username:$password@&quot;
+    fi
+
+    echo -n &quot;server: &quot;; read server
+    echo -n &quot;port: &quot;; read port
+    local proxy=$pre$server:$port
+    export http_proxy=&quot;$proxy&quot; \
+           https_proxy=$proxy \
+           ftp_proxy=$proxy \
+           rsync_proxy=$proxy \
+           HTTP_PROXY=$proxy \
+           HTTPS_PROXY=$proxy \
+           FTP_PROXY=$proxy \
+           RSYNC_PROXY=$proxy
+}
+
+function proxy_off(){
+    unset http_proxy https_proxy ftp_proxy rsync_proxy \
+          HTTP_PROXY HTTPS_PROXY FTP_PROXY RSYNC_PROXY
+    echo -e &quot;Proxy environment variable removed.&quot;
+}
+function wifi_passwords(){
+     sudo grep -r '^psk=' /etc/NetworkManager/system-connections/
+}
+
+function news(){
+#alias news=&quot;curl getnews.tech&quot;
+if [ &quot;$1&quot; == &quot;-c&quot; ]; then
+    curl $2.getnews.tech
+else
+    curl getnews.tech
+fi
+}
+export LS_COLORS='ow=01;33:no=00:fi=00:di=01;31:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
+export LS_COLORS
+#complete -cf mousepad nano bash sudo pacman
+#source &quot;$HOME/.cache/wal/colors.sh&quot;
+# HSTR configuration - add this to ~/.bashrc
+#alias sydrop=&quot;encfs ~/Dropbox/ ~/Private;rsync -azP ~/.config/i3&quot;
+alias rsync=&quot;rsync -arAX --delete &quot;
+alias vbash=&quot;vim ~/.bahsrc&quot;
+alias Mem=&quot;free -mh | awk '/^Mem/ {print $3}'&quot;
+alias vi3=&quot;vim ~/.config/i3/config&quot;
+alias vpolybar=&quot;vim ~/.config/polybar&quot;
+alias rep=&quot;pgrep polybar|xargs kill -USR1&quot;
+alias psize=&quot;expac -S -H M '%k\t%n' &quot;
+alias upshut=&quot;pacman -Syu --noconfirm &amp;&amp; shutdown now&quot;
+alias ports=&quot;netstat -tulanp&quot;
+alias mountc=&quot;mount |column -t&quot;
+alias lsd=&quot;ls -ld -- */&quot;
+alias rr='curl -s -L https://raw.githubusercontent.com/keroserene/rickrollrc/master/roll.sh | bash'
+alias pi=&quot;curl icanhazip.com&quot;
+alias v=&quot;vim&quot;
+alias ll='ls -lh --group-directories-first --time-style=+&quot;%d.%m.%Y %H:%M&quot; --color=auto -F'
+alias la='ls -lha --group-directories-first --time-style=+&quot;%d.%m.%Y %H:%M&quot; --color=auto -F'
+alias grep='grep --color=auto'
+alias more='less'
+alias df='df -h'
+alias du='du -c -h'
+alias mkdir='mkdir -p -v'
+alias ping='ping -c 5'
+alias da='date &quot;+%A, %B %d, %Y [%T]&quot;'
+alias du1='du --max-depth=1'
+alias hist='history | grep'
+alias openports='ss --all --numeric --processes --ipv4 --ipv6'
+alias nightly=&quot;firefox-nightly&quot;
+alias sf='cls;screenfetch;~/scripts/colors-hex'
+alias cls=' echo -ne &quot;\033c&quot;'
+alias ll=&quot;ls -la&quot;
+alias ytdl=&quot;youtube-dl -f 'bestvideo[height&lt;=720]+bestaudio/best[height&lt;=720]' --prefer-free-formats&quot;
+alias ytmp3='youtube-dl --extract-audio --audio-format mp3'
+alias screenkey=&quot;screenkey -f 'DejaVu Sans Mono Book 22' -p bottom --bg-color '#2f343f' --font-color '#f3f4f5'&quot;
+alias s='netstat -tanpu'
+alias rl=&quot;source ~/.bashrc&quot;
+alias co=&quot;ifconfig tun0 | awk 'NR==2 {print \$2}' | xclip -selection c&quot;
+alias p5='php56 -S 127.0.0.1:8010 2&gt;/home/marmathe/.marmathe_php_logs &amp; disown'
+alias xc='xclip -selection clipboard -in'          # cut to clipboard
+alias vo='xclip -selection clipboard -out'         # paste from clipboard
+alias riwd='sudo systemctl restart iwd'
+alias random_wall='ls -d &quot;$PWD/work/wallpapers/MW&quot;/*|uniq|sort -R|head -1|xargs nitrogen --set-zoom-fill|xargs tee ~/wall'
+alias cc='xclip -selection clipboard -in -filter'  # copy clipboard
+alias userlist=&quot;cut -d: -f1 /etc/passwd&quot;
+alias myip=&quot;dig +short myip.opendns.com @resolver1.opendns.com&quot;
+alias logs=&quot;find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f&quot;
+alias insults='wget http://www.randominsults.net -O - 2&gt;/dev/null | grep \&lt;strong\&gt; | sed &quot;s;^.*&lt;i&gt;\(.*\)&lt;/i&gt;.*$;\1;&quot;;'
+alias excuses='echo `telnet bofh.jeffballard.us 666 2&gt;/dev/null` |grep --color -o &quot;Your excuse is:.*$&quot;'     # excuses
+alias freechess='telnet fics.freechess.org 5000'                  # connects to a telnet server for free internet chess
+alias funfacts='wget http://www.randomfunfacts.com -O - 2&gt;/dev/null | grep \&lt;strong\&gt; | sed &quot;s;^.*&lt;i&gt;\(.*\)&lt;/i&gt;.*$;\1;&quot;;'
+alias busy='for i in `seq 0 100`;do timeout 6 dialog --gauge &quot;Install...&quot; 6 40 &quot;$i&quot;;done' # pretend to be busy in office to enjoy a cup of coffee
+alias busy2='my_file=$(find /usr/include -type f | sort -R | head -n 1); my_len=$(wc -l $my_file | awk &quot;{print $1}&quot;); let &quot;r = $RANDOM % $my_len&quot; 2&gt;/dev/null; vim +$r $my_file'
+alias busy3='cat /dev/urandom | hexdump -C | highlight ca fe 3d 42 e1 b3 ae f8 | perl -MTime::HiRes -pnE &quot;Time::HiRes::usleep(rand()*1000000)&quot;'
+#alias 'tmux'='wmux -f ~/.dotfiles/tmux/tm.conf'
+alias ls='ls -a --classify --tabsize=0 --group-directories-first --literal --color=auto --show-control-chars --human-readable'
+#alias 'ls'='exa -a --icons'
+alias 'irssi'='irssi --config ~/.irssi/config --home ~/.irssi/'
+alias 'lswifi'=&quot;iwctl station wlan0 get-networks&quot;
+alias 'tmuxhide'='tmux -f ~/.tmux_hidden.conf'
+alias 'wpa_cli'='wpa_cli -iwlan0'
+alias gc=&quot;git clone $1&quot;
+alias 'gs'='git status'
+alias 'ga'='git add'
+alias 'gm'='git commit -m'
+alias 'gp'='git push'
+alias 'm'='mpv -- &quot;$(pwd)/&quot;'
+alias 'b'='light -S'
+alias 'bat'='cat /sys/class/power_supply/BAT0/capacity /sys/class/power_supply/BAT0/status'
+alias 'update'='sudo pacman -Syu'
+alias 'add'='sudo pacman -S'
+alias 'del'='sudo pacman -Rcns'
+alias ser='pacman -Ss'
+alias sb='vim ~/.bashrc'
+alias sf='vim ~/.func'
+alias si3='vim ~/.config/i3/config'
+alias tree='tree -dA'
+alias ..=&quot;cd ..&quot;
+alias ..2=&quot;cd ../..&quot;
+alias ..3=&quot;cd ../../..&quot;
+alias ..4=&quot;cd ../../../..&quot;
+alias ..5=&quot;cd ../../../../..&quot;
+alias lanip='ip route get 1 | head -1 | cut -d &quot; &quot; -f7'
+# Get the default gateway's (router's) IP address.  See &lt;https://serverfault.com/q/31170&gt;.
+alias anakin=&quot;sudo pacman -Rns \$(pacman -Qtdq)&quot;
+alias neofetch=&quot;clear; neofetch&quot;
+alias refugees=&quot;pacman -Qm&quot;
+alias fixwifi=&quot;sudo modprobe -r iwlmvm; sudo modprobe iwlmvm&quot;
+alias yeah=&quot;yes&quot;
+alias 'mv'='mv -i'
+alias 'cp'='cp -i'
+m-sound() { arecord -L &amp;&amp; arecord -l &amp;&amp; cat /proc/asound/pcm ;}
+mkcd() { mkdir -p -- &quot;$1&quot;; cd &quot;$_&quot; ;}
+
+secrets() {
+    if [ ! -f ~/.secrets ]; then touch ~/.secrets; fi
+    case $@ in
+        &quot;-e&quot;) cat ~/.secrets|xxd -r -p|base64 -d &gt; ~/secrets.open; rm -f ~/.secrets
+              vim ~/secrets.open
+              cat ~/secrets.open|base64|xxd -p -c 16 &gt; ~/.secrets; rm -f ~/secrets.open;;
+           *) cat ~/.secrets|xxd -r -p|base64 -d|less;;
+    esac
+}
+
+shred() {
+    BYTES=`wc -c &lt; &quot;$@&quot;`
+    for i in `seq 1 7`; do
+        dd if=/dev/urandom of=&quot;$@&quot; bs=$BYTES count=1 conv=notrunc status=none
+    done
+    rm -f &quot;$@&quot;
+}
+
+detectcam() {
+    for d in /dev/video*; do
+        v=`v4l2-ctl --device=$d -D --list-formats`
+        if [[ $v == *&quot;LifeCam Cinema&quot;* ]]; then
+            echo $d
+        fi
+    done
+}
+
+run_bg() {
+    nohup $@ &gt; /dev/null 2&gt;&amp;1 &amp;
+}
+
+
+
+function cpstat()
+{
+    local pid=&quot;${1:-$(pgrep -xn cp)}&quot; src dst
+    [[ &quot;$pid&quot; ]] || return
+    while [[ -f &quot;/proc/$pid/fd/3&quot; ]]; do
+        read src dst &lt; &lt;(stat -L --printf '%s ' &quot;/proc/$pid/fd/&quot;{3,4})
+        (( src )) || break
+        printf 'cp %d%%\r' $((dst*100/src))
+        sleep 1
+    done
+    echo
+}
+function backup(){ 
+        folder=&quot;$HOME/Dropbox/linux/configs&quot;
+        if ! command -v /bin/rsync 1&gt;/dev/null;then
+            echo &quot;command not found rsync&quot;
+        else
+            echo -e &quot;[+] Copying bashrc to Dropbox&quot;
+            sleep 3
+            rsync -arAX --delete ~/.bashrc $folder
+            echo -e &quot;[+] Copying Polybar to Dropbox&quot;
+            sleep 3
+            rsync -arAX --delete ~/.config/polybar $folder
+            echo -e &quot;[+] Copying i3 to dropbox&quot;
+            sleep 3
+            rsync -arAX --delete ~/.config/i3 $folder
+            echo -e &quot;[+] Copying vimrc to dropbox&quot;
+            sleep 3
+            rsync -arAX --delete ~/.vimrc $folder
+            echo -e &quot;[+] Copying systemd to dropbox&quot;
+            sleep 3
+            rsync -arAX --delete ~/.config/systemd $folder
+            echo -e &quot;[+] Copying mpd to dropbox&quot;
+            sleep 3
+            rsync -arAX --delete ~/.config/mpd $folder
+            echo -e &quot;[+] copying picom.conf&quot;
+            sleep 3
+            rsync -arAX --delete ~/.config/picom.conf $folder
+
+        fi
+}
+
+PATH=&quot;/home/marmathe/perl5/bin${PATH:+:${PATH}}&quot;; export PATH;
+PERL5LIB=&quot;/home/marmathe/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}&quot;; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT=&quot;/home/marmathe/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}&quot;; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT=&quot;--install_base \&quot;/home/marmathe/perl5\&quot;&quot;; export PERL_MB_OPT;
+PERL_MM_OPT=&quot;INSTALL_BASE=/home/marmathe/perl5&quot;; export PERL_MM_OPT;
+export socks_proxy=''
+
+# HSTR configuration - add this to ~/.bashrc
+alias hh=hstr                    # hh to be alias for hstr
+export HSTR_CONFIG=hicolor       # get more colors
+shopt -s histappend              # append new history items to .bash_history
+export HISTCONTROL=erasedups:ignoreboth   # leading space hides commands from history
+export HISTSIZE=1000000
+export HISTFILESIZE=1000000
+export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
+# ensure synchronization between bash memory and history file
+# if this is interactive shell, then bind hstr to Ctrl-r (for Vi mode check doc)
+#if [[ $- =~ .*i.* ]]; then bind '&quot;\C-r&quot;: &quot;hstr -- \C-j&quot;'; fi
+# if this is interactive shell, then bind 'kill last command' to Ctrl-x k
+#if [[ $- =~ .*i.* ]]; then bind '&quot;\C-xk&quot;: &quot;hstr -k \C-j&quot;'; fi
+#eval &quot;$(pandoc --bash-completion)&quot;
+#source &quot;$HOME/.cargo/env&quot;
+</code></pre>
 
                     </main>
 
