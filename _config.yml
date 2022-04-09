@@ -21,6 +21,7 @@
 permalink: /:title.html
 #title: my linux docs so icant forget
 email: mohamed@cock.li 
+exclude: [_src]
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://kaxbx.github.io/" # the base hostname & protocol for your site, e.g. http://example.com
 
