@@ -1,3 +1,5 @@
 # Summary
-
-- [Chapter 1](./chapter_1.md)
+- [Command Line Tool](cli/README.md)
+    - [mpv](cli/mpv.md)
+- [Configs](configs/README.md)
+    - [bash_config](cli/bash.md)
