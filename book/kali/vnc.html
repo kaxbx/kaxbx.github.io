@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>mpv - some shits</title>
+        <title>vnc - some shits</title>
 
 
         <!-- Custom HTML head -->
@@ -81,7 +81,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="../cli/index.html"><strong aria-hidden="true">1.</strong> Command Line Tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cli/mpv.html" class="active"><strong aria-hidden="true">1.1.</strong> mpv</a></li><li class="chapter-item expanded "><a href="../cli/sudo.html"><strong aria-hidden="true">1.2.</strong> sudo</a></li></ol></li><li class="chapter-item expanded "><a href="../configs/index.html"><strong aria-hidden="true">2.</strong> Configs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cli/bash.html"><strong aria-hidden="true">2.1.</strong> bash_config</a></li><li class="chapter-item expanded "><a href="../configs/vim.html"><strong aria-hidden="true">2.2.</strong> vim</a></li></ol></li><li class="chapter-item expanded "><a href="../cli/info.html"><strong aria-hidden="true">3.</strong> some info</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cli/mount.html"><strong aria-hidden="true">3.1.</strong> mount</a></li></ol></li><li class="chapter-item expanded "><a href="../kali/index.html"><strong aria-hidden="true">4.</strong> Kali Nethunter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kali/vnc.html"><strong aria-hidden="true">4.1.</strong> vnc</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="../cli/index.html"><strong aria-hidden="true">1.</strong> Command Line Tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cli/mpv.html"><strong aria-hidden="true">1.1.</strong> mpv</a></li><li class="chapter-item expanded "><a href="../cli/sudo.html"><strong aria-hidden="true">1.2.</strong> sudo</a></li></ol></li><li class="chapter-item expanded "><a href="../configs/index.html"><strong aria-hidden="true">2.</strong> Configs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cli/bash.html"><strong aria-hidden="true">2.1.</strong> bash_config</a></li><li class="chapter-item expanded "><a href="../configs/vim.html"><strong aria-hidden="true">2.2.</strong> vim</a></li></ol></li><li class="chapter-item expanded "><a href="../cli/info.html"><strong aria-hidden="true">3.</strong> some info</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../cli/mount.html"><strong aria-hidden="true">3.1.</strong> mount</a></li></ol></li><li class="chapter-item expanded "><a href="../kali/index.html"><strong aria-hidden="true">4.</strong> Kali Nethunter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="../kali/vnc.html" class="active"><strong aria-hidden="true">4.1.</strong> vnc</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -142,31 +142,31 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="mpv"><a class="header" href="#mpv">mpv</a></h1>
-<ul>
-<li>
-<p>let create socket first</p>
-<p><code>.config/mpv/mpv.conf </code></p>
-</li>
-</ul>
-<pre><code class="language-bash">input-ipc-server=~~/socket
-
+                        <h1 id="nethutner---kex-not-working"><a class="header" href="#nethutner---kex-not-working">nethutner - Kex not Working</a></h1>
+<ol>
+<li>Delete <code>.vnc</code> folder under /root directory or <code>/home/$USER</code></li>
+<li>now delete all the files inside of tmp folder including </li>
+<li>Now make new server using command :- <code>vncserver -depth 24 -geometry 1920x1080</code></li>
+<li>provide new password and run vnc viewer on new port</li>
+</ol>
+<pre><code class="language-bash"># do this first
+sudo rm /root/.vnc -rf
+# do this second
+sudo rm /tmp/* -rf
+# setup vnc
+vncserver -depth 24 -geometry 1920x1080
+# do this to check if vnc-server running
+ps -aux | grep vnc
 </code></pre>
-<p>now restart mpv</p>
-<p>to pause</p>
-<p><code>echo cycle pause | socat - &quot;.config/mpv/socket&quot;</code></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../cli/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../kali/index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <i class="fa fa-angle-left"></i>
                             </a>
 
-                            <a rel="next" href="../cli/sudo.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                                <i class="fa fa-angle-right"></i>
-                            </a>
 
                         <div style="clear: both"></div>
                     </nav>
@@ -174,13 +174,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../cli/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../kali/index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <i class="fa fa-angle-left"></i>
                     </a>
 
-                    <a rel="next" href="../cli/sudo.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
-                        <i class="fa fa-angle-right"></i>
-                    </a>
             </nav>
 
         </div>

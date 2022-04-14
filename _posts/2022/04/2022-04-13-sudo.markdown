@@ -1,0 +1,6 @@
+---
+layout: post
+date: 2022-04-13
+title: "sudo"
+excerpt:
+---

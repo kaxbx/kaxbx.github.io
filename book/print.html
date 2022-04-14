@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="cli/index.html"><strong aria-hidden="true">1.</strong> Command Line Tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mpv.html"><strong aria-hidden="true">1.1.</strong> mpv</a></li></ol></li><li class="chapter-item expanded "><a href="configs/index.html"><strong aria-hidden="true">2.</strong> Configs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/bash.html"><strong aria-hidden="true">2.1.</strong> bash_config</a></li><li class="chapter-item expanded "><a href="configs/vim.html"><strong aria-hidden="true">2.2.</strong> vim</a></li></ol></li><li class="chapter-item expanded "><a href="cli/info.html"><strong aria-hidden="true">3.</strong> some info</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mount.html"><strong aria-hidden="true">3.1.</strong> mount</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="cli/index.html"><strong aria-hidden="true">1.</strong> Command Line Tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mpv.html"><strong aria-hidden="true">1.1.</strong> mpv</a></li><li class="chapter-item expanded "><a href="cli/sudo.html"><strong aria-hidden="true">1.2.</strong> sudo</a></li></ol></li><li class="chapter-item expanded "><a href="configs/index.html"><strong aria-hidden="true">2.</strong> Configs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/bash.html"><strong aria-hidden="true">2.1.</strong> bash_config</a></li><li class="chapter-item expanded "><a href="configs/vim.html"><strong aria-hidden="true">2.2.</strong> vim</a></li></ol></li><li class="chapter-item expanded "><a href="cli/info.html"><strong aria-hidden="true">3.</strong> some info</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mount.html"><strong aria-hidden="true">3.1.</strong> mount</a></li></ol></li><li class="chapter-item expanded "><a href="kali/index.html"><strong aria-hidden="true">4.</strong> Kali Nethunter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="kali/vnc.html"><strong aria-hidden="true">4.1.</strong> vnc</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -157,6 +157,10 @@
 <p>now restart mpv</p>
 <p>to pause</p>
 <p><code>echo cycle pause | socat - &quot;.config/mpv/socket&quot;</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sudo"><a class="header" href="#sudo">sudo</a></h1>
+<pre><code class="language-bash">
+
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configs"><a class="header" href="#configs">Configs</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="i-will-post-my-config-soon-with-some-explain"><a class="header" href="#i-will-post-my-config-soon-with-some-explain">i will post my config soon with some explain</a></h1>
 <p><code>~/.bashrc</code></p>
@@ -745,6 +749,23 @@ export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
 <p>use tool <code>fusermount</code></p>
 <p>to unmount zip</p>
 <p><code>fsermount -u directory</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="kali-nethunter"><a class="header" href="#kali-nethunter">Kali Nethunter</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="nethutner---kex-not-working"><a class="header" href="#nethutner---kex-not-working">nethutner - Kex not Working</a></h1>
+<ol>
+<li>Delete <code>.vnc</code> folder under /root directory or <code>/home/$USER</code></li>
+<li>now delete all the files inside of tmp folder including </li>
+<li>Now make new server using command :- <code>vncserver -depth 24 -geometry 1920x1080</code></li>
+<li>provide new password and run vnc viewer on new port</li>
+</ol>
+<pre><code class="language-bash"># do this first
+sudo rm /root/.vnc -rf
+# do this second
+sudo rm /tmp/* -rf
+# setup vnc
+vncserver -depth 24 -geometry 1920x1080
+# do this to check if vnc-server running
+ps -aux | grep vnc
+</code></pre>
 
                     </main>
 
