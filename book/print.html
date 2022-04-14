@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="cli/index.html"><strong aria-hidden="true">1.</strong> Command Line Tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mpv.html"><strong aria-hidden="true">1.1.</strong> mpv</a></li><li class="chapter-item expanded "><a href="cli/sudo.html"><strong aria-hidden="true">1.2.</strong> sudo</a></li></ol></li><li class="chapter-item expanded "><a href="configs/index.html"><strong aria-hidden="true">2.</strong> Configs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/bash.html"><strong aria-hidden="true">2.1.</strong> bash_config</a></li><li class="chapter-item expanded "><a href="configs/vim.html"><strong aria-hidden="true">2.2.</strong> vim</a></li></ol></li><li class="chapter-item expanded "><a href="cli/info.html"><strong aria-hidden="true">3.</strong> some info</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mount.html"><strong aria-hidden="true">3.1.</strong> mount</a></li></ol></li><li class="chapter-item expanded "><a href="kali/index.html"><strong aria-hidden="true">4.</strong> Kali Nethunter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="kali/vnc.html"><strong aria-hidden="true">4.1.</strong> vnc</a></li><li class="chapter-item expanded "><a href="kali/apt.html"><strong aria-hidden="true">4.2.</strong> apt</a></li></ol></li><li class="chapter-item expanded "><a href="kali/index.html"><strong aria-hidden="true">5.</strong> Android</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="android/apps.html"><strong aria-hidden="true">5.1.</strong> apps</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="cli/index.html"><strong aria-hidden="true">1.</strong> Command Line Tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mpv.html"><strong aria-hidden="true">1.1.</strong> mpv</a></li><li class="chapter-item expanded "><a href="cli/sudo.html"><strong aria-hidden="true">1.2.</strong> sudo</a></li></ol></li><li class="chapter-item expanded "><a href="configs/index.html"><strong aria-hidden="true">2.</strong> Configs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/bash.html"><strong aria-hidden="true">2.1.</strong> bash_config</a></li><li class="chapter-item expanded "><a href="configs/vim.html"><strong aria-hidden="true">2.2.</strong> vim</a></li></ol></li><li class="chapter-item expanded "><a href="Archlinux/index.html"><strong aria-hidden="true">3.</strong> Archlinux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="archlinux/secureboot.html"><strong aria-hidden="true">3.1.</strong> Secureboot</a></li></ol></li><li class="chapter-item expanded "><a href="cli/info.html"><strong aria-hidden="true">4.</strong> some info</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mount.html"><strong aria-hidden="true">4.1.</strong> mount</a></li></ol></li><li class="chapter-item expanded "><a href="kali/index.html"><strong aria-hidden="true">5.</strong> Kali Nethunter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="kali/vnc.html"><strong aria-hidden="true">5.1.</strong> vnc</a></li><li class="chapter-item expanded "><a href="kali/apt.html"><strong aria-hidden="true">5.2.</strong> apt</a></li></ol></li><li class="chapter-item expanded "><a href="kali/index.html"><strong aria-hidden="true">6.</strong> Android</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="android/apps.html"><strong aria-hidden="true">6.1.</strong> apps</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -741,6 +741,23 @@ export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
 #source &quot;$HOME/.cargo/env&quot;
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="vim"><a class="header" href="#vim">vim</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="archlinux"><a class="header" href="#archlinux">Archlinux</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="secureboot"><a class="header" href="#secureboot">Secureboot</a></h1>
+<ol>
+<li>Install efibootmgr and shim-signed (shim-signed is in the AUR)</li>
+<li>Mount your boot partition to /boot/efi if already booting u dont have to mount</li>
+<li>Open a terminal and as root type:</li>
+<li>Note: You might not have a folder &quot;GRUB&quot;, if that is the case replace the /GRUB part of the command with whichever directory in /boot/efi/EFI that contains &quot;grubx64.efi&quot;. Also do this in step 4 and 6.</li>
+</ol>
+<pre><code class="language-bash">cp /usr/share/shim-signed/shimx64.efi /boot/efi/EFI/GRUB/shimx64.efi
+cp /usr/share/shim-signed/mmx64.efi /boot/efi/EFI/GRUB/
+</code></pre>
+<ol start="5">
+<li>Then create a boot entry, replacing the --disk and --part options with your boot partition:
+<code>efibootmgr --verbose --disk /dev/sdX --part Y --create --label &quot;Shim&quot; --loader /EFI/GRUB/shimx64.efi</code></li>
+<li>Reboot and enter UEFI firmware settings (hold volume up key while booting), and change secure boot to &quot;Microsoft and Third Party CA&quot;. Also, in boot options make sure &quot;Shim&quot; is at the top of the list.</li>
+<li>Reboot again and MOK manager should appear. Select &quot;enroll hash&quot;, select the EFI directory, and then select the GRUB directory, and lastly select &quot;grubx64.efi&quot;. Once enrolled, reboot.</li>
+</ol>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="some-info"><a class="header" href="#some-info">some info</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="just-some-infos-about-mount"><a class="header" href="#just-some-infos-about-mount"># just some infos about mount</a></h1>
 <h3 id="to-mount-zip-file"><a class="header" href="#to-mount-zip-file">to mount zip file</a></h3>
