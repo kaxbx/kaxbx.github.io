@@ -82,7 +82,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="cli/index.html"><strong aria-hidden="true">1.</strong> Command Line Tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mpv.html"><strong aria-hidden="true">1.1.</strong> mpv</a></li></ol></li><li class="chapter-item expanded "><a href="configs/index.html"><strong aria-hidden="true">2.</strong> Configs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/bash.html"><strong aria-hidden="true">2.1.</strong> bash_config</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="cli/index.html"><strong aria-hidden="true">1.</strong> Command Line Tool</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mpv.html"><strong aria-hidden="true">1.1.</strong> mpv</a></li><li class="chapter-item expanded "><a href="cli/sudo.html"><strong aria-hidden="true">1.2.</strong> sudo</a></li></ol></li><li class="chapter-item expanded "><a href="configs/index.html"><strong aria-hidden="true">2.</strong> Configs</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/bash.html"><strong aria-hidden="true">2.1.</strong> bash_config</a></li><li class="chapter-item expanded "><a href="configs/vim.html"><strong aria-hidden="true">2.2.</strong> vim</a></li></ol></li><li class="chapter-item expanded "><a href="Archlinux/index.html"><strong aria-hidden="true">3.</strong> Archlinux</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="archlinux/secureboot.html"><strong aria-hidden="true">3.1.</strong> Secureboot</a></li></ol></li><li class="chapter-item expanded "><a href="cli/info.html"><strong aria-hidden="true">4.</strong> some info</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="cli/mount.html"><strong aria-hidden="true">4.1.</strong> mount</a></li></ol></li><li class="chapter-item expanded "><a href="kali/index.html"><strong aria-hidden="true">5.</strong> Kali Nethunter</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="kali/vnc.html"><strong aria-hidden="true">5.1.</strong> vnc</a></li><li class="chapter-item expanded "><a href="kali/apt.html"><strong aria-hidden="true">5.2.</strong> apt</a></li></ol></li><li class="chapter-item expanded "><a href="kali/index.html"><strong aria-hidden="true">6.</strong> Android</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="android/apps.html"><strong aria-hidden="true">6.1.</strong> apps</a></li><li class="chapter-item expanded "><a href="android/frp.html"><strong aria-hidden="true">6.2.</strong> frp tips</a></li><li class="chapter-item expanded "><a href="android/heimdall.html"><strong aria-hidden="true">6.3.</strong> heimdall</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -157,6 +157,10 @@
 <p>now restart mpv</p>
 <p>to pause</p>
 <p><code>echo cycle pause | socat - &quot;.config/mpv/socket&quot;</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="sudo"><a class="header" href="#sudo">sudo</a></h1>
+<pre><code class="language-bash">
+
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="configs"><a class="header" href="#configs">Configs</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="i-will-post-my-config-soon-with-some-explain"><a class="header" href="#i-will-post-my-config-soon-with-some-explain">i will post my config soon with some explain</a></h1>
 <p><code>~/.bashrc</code></p>
@@ -736,6 +740,122 @@ export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
 #eval &quot;$(pandoc --bash-completion)&quot;
 #source &quot;$HOME/.cargo/env&quot;
 </code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="vim"><a class="header" href="#vim">vim</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="archlinux"><a class="header" href="#archlinux">Archlinux</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="secureboot"><a class="header" href="#secureboot">Secureboot</a></h1>
+<ol>
+<li>Install efibootmgr and shim-signed (shim-signed is in the AUR)</li>
+<li>Mount your boot partition to /boot/efi if already booting u dont have to mount</li>
+<li>Open a terminal and as root type:</li>
+<li>Note: You might not have a folder &quot;GRUB&quot;, if that is the case replace the /GRUB part of the command with whichever directory in /boot/efi/EFI that contains &quot;grubx64.efi&quot;. Also do this in step 4 and 6.</li>
+</ol>
+<pre><code class="language-bash">cp /usr/share/shim-signed/shimx64.efi /boot/efi/EFI/GRUB/shimx64.efi
+cp /usr/share/shim-signed/mmx64.efi /boot/efi/EFI/GRUB/
+</code></pre>
+<ol start="5">
+<li>Then create a boot entry, replacing the --disk and --part options with your boot partition:
+<code>efibootmgr --verbose --disk /dev/sdX --part Y --create --label &quot;Shim&quot; --loader /EFI/GRUB/shimx64.efi</code></li>
+<li>Reboot and enter UEFI firmware settings (hold volume up key while booting), and change secure boot to &quot;Microsoft and Third Party CA&quot;. Also, in boot options make sure &quot;Shim&quot; is at the top of the list.</li>
+<li>Reboot again and MOK manager should appear. Select &quot;enroll hash&quot;, select the EFI directory, and then select the GRUB directory, and lastly select &quot;grubx64.efi&quot;. Once enrolled, reboot.</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="some-info"><a class="header" href="#some-info">some info</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="just-some-infos-about-mount"><a class="header" href="#just-some-infos-about-mount"># just some infos about mount</a></h1>
+<h3 id="to-mount-zip-file"><a class="header" href="#to-mount-zip-file">to mount zip file</a></h3>
+<p>fuse-zip $file$ <code>directory where to mount</code> </p>
+<h3 id="to-unmount-zip-file"><a class="header" href="#to-unmount-zip-file">to unmount zip file</a></h3>
+<p>use tool <code>fusermount</code></p>
+<p>to unmount zip</p>
+<p><code>fsermount -u directory</code></p>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="kali-nethunter"><a class="header" href="#kali-nethunter">Kali Nethunter</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="nethutner---kex-not-working"><a class="header" href="#nethutner---kex-not-working">nethutner - Kex not Working</a></h1>
+<ol>
+<li>Delete <code>.vnc</code> folder under /root directory or <code>/home/$USER</code></li>
+<li>now delete all the files inside of tmp folder including </li>
+<li>Now make new server using command :- <code>vncserver -depth 24 -geometry 1920x1080</code></li>
+<li>provide new password and run vnc viewer on new port</li>
+</ol>
+<pre><code class="language-bash"># do this first
+sudo rm /root/.vnc -rf
+# do this second
+sudo rm /tmp/* -rf
+# setup vnc
+vncserver -depth 24 -geometry 1920x1080
+# do this to check if vnc-server running
+ps -aux | grep vnc
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="nethunter---apt-update-not-working"><a class="header" href="#nethunter---apt-update-not-working">nethunter - apt update not working</a></h1>
+<h3 id="old-keys-in-kali-we-need-to-replace-to-them"><a class="header" href="#old-keys-in-kali-we-need-to-replace-to-them">old keys in kali we need to replace to them</a></h3>
+<h3 id="let-download-keyring"><a class="header" href="#let-download-keyring">let download keyring</a></h3>
+<ol>
+<li><code>wget -O kali-archive-keyring_2022.1_all.deb http://http.kali.org/kali/pool/main/k/kali-archive-keyring/kali-archive-keyring_2022.1_all.deb</code></li>
+</ol>
+<h3 id="now-let-install-it"><a class="header" href="#now-let-install-it">now let install it</a></h3>
+<ol start="2">
+<li>
+<p><code>sudo dpkg -i kali-archive-keyring_2022.1_all.deb</code></p>
+</li>
+<li>
+<p>time for hunt</p>
+</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="kali-nethunter-1"><a class="header" href="#kali-nethunter-1">Kali Nethunter</a></h1>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="some-apps-that-i-found-good-to-try"><a class="header" href="#some-apps-that-i-found-good-to-try">some apps that i found good to try</a></h1>
+<h3 id="app-for-backup-files"><a class="header" href="#app-for-backup-files">app for backup files</a></h3>
+<ul>
+<li><a href="https://github.com/NeoApplications/Neo-Backup">Neo Backup - to backup files</a></li>
+<li><a href="https://github.com/Sangwan5688/BlackHole">blackhole - stream music</a></li>
+<li><a href="https://github.com/xManager-v2/xManager-Spotify">Xmanager - mod spotify</a></li>
+<li><a href="https://github.com/Genymobile/scrcpy/releases/tag/v1.23">remote control</a></li>
+<li><a href="https://github.com/LagradOst/CloudStream-3/releases">cloudstream - like netflix</a></li>
+<li><a href="https://github.com/00-Evan/shattered-pixel-dungeon">Shattered pixel dungeon game</a>
+default dark
+AntennaPod
+Anysoftkeyboard
+Download Navi
+SecScanQR
+WireGuard
+X-plore
+subsratum
+QKSMS
+FairEmail</li>
+</ul>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="some-tips-about-frp-bypass"><a class="header" href="#some-tips-about-frp-bypass">some tips about frp bypass</a></h1>
+<h3 id="let-disable-knox-enro-service"><a class="header" href="#let-disable-knox-enro-service">let disable knox enro* service</a></h3>
+<ol>
+<li>if there knox security we need to bypass it</li>
+<li>create samsung account and install shield and create compte</li>
+<li>do backup to account and install efrp2020 v1 then open browser</li>
+<li>then go to this website efrp.me open settings and restore </li>
+<li>go to vnroom site open shield and login and enable knxo and admin</li>
+<li>application manager -&gt; service mode -&gt; activatiys -&gt; usb -&gt; mtp + adb</li>
+<li>then run this commend on shell adb to disbale knox
+<code>adb shell pm disable-user --user 0 com.sec.enterprise.knox.cloudmdm.smdms</code></li>
+<li>now let skip setup wizard using adb</li>
+</ol>
+<pre><code class="language-bash">
+adb shell settings put global setup_wizard_has_run 1
+adb shell settings put secure user_setup_complete 1
+adb shell settings put global device_provisioned 1
+
+</code></pre>
+<ol start="9">
+<li>now reboot</li>
+</ol>
+<div style="break-before: page; page-break-before: always;"></div><h1 id="flash-android-using-linux"><a class="header" href="#flash-android-using-linux">flash android using linux</a></h1>
+<ol>
+<li>install heimdall on linux</li>
+</ol>
+<pre><code class="language-bash"># for arch
+sudo pacman -S heimdall
+# for non-arch
+sudo apt install heimdall
+</code></pre>
+<ol start="2">
+<li>check version <code>heimdall version</code></li>
+<li>download pit <code>heimdall print-pit</code></li>
+<li>If the device reboots that indicates that Heimdall is installed and working properly. If it does not, please refollow these instructions to verify steps weren’t missed, try a different USB cable, and a different USB port.</li>
+<li>to flash custom recovery <code>heimdall flash --RECOVERY &lt;recovery_filename&gt;.img --no-reboot</code></li>
+</ol>
 
                     </main>
 
