@@ -742,6 +742,109 @@ export HISTSIZE=${HISTFILESIZE}  # increase history size (default is 500)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="vim"><a class="header" href="#vim">vim</a></h1>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="archlinux"><a class="header" href="#archlinux">Archlinux</a></h1>
+<h1 id="pacman"><a class="header" href="#pacman">Pacman</a></h1>
+<style>
+r { color: Red }
+o { color: Orange }
+g { color: Green }
+</style>
+<ul>
+<li>first let to do update to <span style="color:blue;">system<br></span>
+<code>sudo pacman -Syyu</code></li>
+</ul>
+<pre><code class="language-bash">-S, --sync
+-y, --refresh
+-U, --upgrade
+</code></pre>
+<ul>
+<li>let install some fresh <span style="color:green;">packages</br></span>
+<code>sudo pacman -S sudo man-db i3-gaps mpv mpd ncmpcpp mpc python3 ruby golang rofi chromium firefox dmenu</code></li>
+</ul>
+<pre><code class="language-bash">man-db -&gt; pages of info about application
+i3-gaps -&gt; window manager
+mpv -&gt; video player from local and online
+mpd -&gt; local music server
+ncmpcpp -&gt; gui in terminal control local music server
+mpc -&gt; terminal control music server
+python3 -&gt; language very easy to lean
+ruby -&gt; language easy to lean
+golang -&gt; language easy to learn
+rofi -&gt; it like launcher
+chromium -&gt; browser without google stuff
+firefox -&gt; browser
+dmenu -&gt; launcher in top
+</code></pre>
+<h1 id="man"><a class="header" href="#man">man</a></h1>
+<h3 id="display-manual-pages"><a class="header" href="#display-manual-pages">display manual pages.</a></h3>
+<p>Most <em>underlined</em> words in man pages are for emphasis. Its is not a <em>hyperlink</em> .</p>
+<p><span style="color:red;">MANUAL SECTIONS<br></span>
+The standard sections of the manual include:</p>
+<pre><code>1      User Commands
+2      System Calls
+3      C Library Functions
+4      Devices and Special Files
+5      File Formats and Conventions
+6      Games et. al.
+7      Miscellanea
+8      System Administration tools and Daemons
+</code></pre>
+<h1 id="xargs"><a class="header" href="#xargs">xargs</a></h1>
+<p>construct argument list(s) and execute utility</p>
+<p>-I -&gt; give ur list name</p>
+<p><code>find -type f emotion | xargs -I{} cp {} dest1</code> </p>
+<h1 id="wc"><a class="header" href="#wc">wc</a></h1>
+<p><r>-l</r> lines<br />
+<r>-m</r> characters<br />
+<r>-w</r> words</p>
+<h1 id="file-compression"><a class="header" href="#file-compression">file compression</a></h1>
+<h3 id="zip"><a class="header" href="#zip"><strong>zip</strong></a></h3>
+<ul>
+<li><r>-r</r> recursive directory</li>
+<li><r>-x</r> exclude<br />
+<code>zip -r app.zip app -x &quot;*/.git/*&quot; &quot;*.DS_Store*&quot; &quot;*/node_modules/*&quot;</code></li>
+</ul>
+<h3 id="tar"><a class="header" href="#tar"><strong>tar</strong></a></h3>
+<ul>
+<li><r>-c</r> Create a new archive containing the specified items.</li>
+<li><r>-t</r> List archive contents to stdout.</li>
+<li><r>-x</r> Extract to disk from the archive.</li>
+<li><r>-j</r> (c mode only) Compress the resulting archive with bzip2</li>
+<li><r>-z</r> (c mode only) Compress the resulting archive with gzip</li>
+<li><r>-Z</r> (c mode only) Compress the resulting archive with compress</li>
+</ul>
+<pre><code class="language-bash">tar -zcvf app.tar.gz app
+tar -jcvf app.tar.bz2 app
+tar -Jcvf app.tar.xz app
+</code></pre>
+<h3 id="ffmpeg"><a class="header" href="#ffmpeg"><strong>ffmpeg</strong></a></h3>
+<pre><code class="language-bash"># aiff to mp3
+ffmpeg -i hello.aiff -f mp3 -acodec libmp3lame -ab 19200 -ar 44100 hello.mp3
+# 2 hours blank video
+ffmpeg -t 7200 -f lavfi -i color=c=black:s=640x480 -c:v libx264 -tune stillimage -pix_fmt yuv420p output.mp4
+# cut video
+ffmpeg -i movie.mp4 -ss 00:00:03 -t 00:00:08 -async 1 cut.mp4
+# alternative
+ffmpeg -ss 00:01:12 -i movie.mp4 -ss 00:00:00 -t 00:00:03 -c copy cut.mp4
+# merge video and audio
+ffmpeg -i video.mp4 -i audio.wav -c:v copy -c:a aac output.mp4
+# extract audio from mp4
+ffmpeg.exe -i in.mp4 -vn -c:a copy -ac 2 out.m4a
+# extract audio from webm
+ffmpeg -i &quot;source.webm&quot; -vn -acodec copy &quot;output.opus&quot;
+</code></pre>
+<h2 id="passwd"><a class="header" href="#passwd"><em><strong>passwd</strong></em></a></h2>
+<pre><code class="language-bash"># list all user
+cat /etc/passwd
+# username:password:UID:GID:Comment:HomeDirectory:ShellUsed
+root:x:0:0:root:/root:/bin/zsh
+# ...
+</code></pre>
+<h2 id="groups"><a class="header" href="#groups"><em><strong>groups</strong></em></a></h2>
+<pre><code class="language-bash"># group_name:password:GID:Users_in_the_group
+root:x:0:root
+bin:x:1:root,bin,daemon
+# ...
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="secureboot"><a class="header" href="#secureboot">Secureboot</a></h1>
 <ol>
 <li>Install efibootmgr and shim-signed (shim-signed is in the AUR)</li>
